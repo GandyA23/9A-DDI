@@ -59,6 +59,12 @@ fun main (args : Array<String>) {
         print("${args[i]} ")
     println()
 
+    // Recorrido en argumentos con for-each
+    println("Recorriengo los argumentos de la función main (for-each): ")
+    for (a in args)
+        print("${a} ")
+    println()
+
     // while
     var minutos = 10
     println("Secuencia hacia abajo (while): ")
