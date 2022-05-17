@@ -1,3 +1,5 @@
 # Clases creadas durante la ejecución
 *.class
 
+# Carpeta creada durante la ejecución de proyectos en Kotlin
+*/out/
