@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Se crea un círculo con el borde de primaryDark, este circulo es codificado
+    con los métodos que son importados de android
+-->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="ring"
+    android:thickness="10dp"
+    android:innerRadiusRatio="2.3"
+    android:useLevel="false"
+    >
+    <solid android:color="@color/primaryDark"></solid>
+</shape>
