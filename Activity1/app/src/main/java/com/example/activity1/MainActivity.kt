@@ -23,17 +23,32 @@ class MainActivity : Activity() {
         val btnReplay : Button = binding.btnReplay
         val chronometer : Chronometer = binding.chronometer
 
+        // Inicia
         btnPlay.setOnClickListener {
+            btnPlay.isEnabled = false
+            btnStop.isEnabled = true
+            btnReplay.isEnabled = true
+
+            // El tiempo del cronómetro se inicializa en 0
             chronometer.base = SystemClock.elapsedRealtime()
             chronometer.start()
         }
-
+    
+        // Detente
         btnStop.setOnClickListener {
+            btnPlay.isEnabled = true
+            btnStop.isEnabled = false
+            btnReplay.isEnabled = false
+
+            // El tiempo del cronómetro se inicializa en 0
+            chronometer.base = SystemClock.elapsedRealtime()
             chronometer.stop()
         }
 
+        // Reinicia
         btnReplay.setOnClickListener {
             chronometer.stop()
+            // El tiempo del cronómetro se inicializa en 0
             chronometer.base = SystemClock.elapsedRealtime()
             chronometer.start()
         }

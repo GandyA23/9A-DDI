@@ -31,6 +31,7 @@
             android:progress="100"
             android:progressDrawable="@drawable/circle_1"
             android:rotation="-90" />
+
         <!--
             Vista Cronómetro
             android:layout_centerInParent: Hace que se mantenga centrado dependiendo el tamaño de la vista padre
@@ -62,7 +63,8 @@
             android:layout_height="28dp"
             android:layout_below="@id/chronometer"
             android:layout_toLeftOf="@id/btnPlay"
-            android:background="@drawable/ic_stop" />
+            android:background="@drawable/ic_stop"
+            android:enabled="false" />
 
         <!-- Vista Botón de replay -->
         <Button
@@ -71,6 +73,7 @@
             android:layout_height="28dp"
             android:layout_below="@id/chronometer"
             android:layout_toRightOf="@id/btnPlay"
-            android:background="@drawable/ic_replay" />
+            android:background="@drawable/ic_replay"
+            android:enabled="false" />
     </RelativeLayout>
 </androidx.wear.widget.BoxInsetLayout>
