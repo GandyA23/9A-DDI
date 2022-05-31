@@ -15,7 +15,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_boxedEdges="all">
+        >
 
         <!--
             Vista ProgressBar
@@ -35,14 +35,16 @@
         <!--
             Vista Cronómetro
             android:layout_centerInParent: Hace que se mantenga centrado dependiendo el tamaño de la vista padre
+            android:layout_centerHorizontal: Se centra horizontalmente al padre
         -->
         <Chronometer
             android:id="@+id/chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="25sp"
-            android:textColor="@color/accent" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/accent"
+            android:textSize="30sp" />
 
         <!--
             Vista Botón de play
@@ -52,8 +54,8 @@
             android:id="@+id/btnPlay"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_centerInParent="true"
             android:layout_below="@id/chronometer"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/ic_play" />
 
         <!-- Vista Botón de stop -->
@@ -61,8 +63,8 @@
             android:id="@+id/btnStop"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_below="@id/chronometer"
-            android:layout_toLeftOf="@id/btnPlay"
+            android:layout_below="@id/btnPlay"
+            android:layout_alignStart="@id/chronometer"
             android:background="@drawable/ic_stop"
             android:enabled="false" />
 
@@ -71,8 +73,8 @@
             android:id="@+id/btnReplay"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_below="@id/chronometer"
-            android:layout_toRightOf="@id/btnPlay"
+            android:layout_below="@id/btnPlay"
+            android:layout_alignEnd="@id/chronometer"
             android:background="@drawable/ic_replay"
             android:enabled="false" />
     </RelativeLayout>
