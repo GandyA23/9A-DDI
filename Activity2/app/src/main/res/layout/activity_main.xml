@@ -18,9 +18,9 @@
         <TextView
             android:id="@+id/result"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:text="0.0"
-            android:textColor="@color/dark"
+            android:layout_height="30dp"
+            android:textSize="10dp"
+            android:textColor="@color/light"
             android:layout_centerHorizontal="true" />
 
         <!-- Start first row -->
@@ -32,7 +32,7 @@
             android:layout_below="@+id/result"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_7"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button 8 -->
         <Button
@@ -43,7 +43,7 @@
             android:layout_toRightOf="@id/btn7"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_8"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button 9 -->
         <Button
@@ -54,7 +54,7 @@
             android:layout_toRightOf="@id/btn8"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_9"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button division -->
         <Button
@@ -65,7 +65,7 @@
             android:layout_toRightOf="@id/btn9"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_division"
-            android:textColor="@color/dark" />
+            />
         <!-- End first row -->
 
         <!-- Start second row -->
@@ -77,7 +77,7 @@
             android:layout_below="@+id/btn7"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_4"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button 5 -->
         <Button
@@ -88,7 +88,7 @@
             android:layout_toRightOf="@id/btn4"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_5"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button 6 -->
         <Button
@@ -99,7 +99,7 @@
             android:layout_toRightOf="@id/btn5"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_6"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button Multiplication -->
         <Button
@@ -110,7 +110,7 @@
             android:layout_toRightOf="@id/btn6"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_close"
-            android:textColor="@color/dark" />
+            />
         <!-- End second row -->
 
         <!-- Start third row -->
@@ -122,7 +122,7 @@
             android:layout_below="@+id/btn4"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_1"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button 2 -->
         <Button
@@ -133,7 +133,7 @@
             android:layout_toRightOf="@id/btn1"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_2"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button 3 -->
         <Button
@@ -144,7 +144,7 @@
             android:layout_toRightOf="@id/btn2"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_3"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button Plus -->
         <Button
@@ -155,7 +155,7 @@
             android:layout_toRightOf="@id/btn6"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_plus"
-            android:textColor="@color/dark" />
+            />
         <!-- End third row -->
 
         <!-- Start fourth row -->
@@ -167,7 +167,7 @@
             android:layout_below="@+id/btn1"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_c"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button 0 -->
         <Button
@@ -178,7 +178,7 @@
             android:layout_toRightOf="@id/btnC"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_0"
-            android:textColor="@color/dark" />
+            />
 
         <!-- Button equal -->
         <Button
@@ -189,7 +189,18 @@
             android:layout_toRightOf="@id/btn0"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_equal"
-            android:textColor="@color/dark" />
+            />
+
+        <!-- Button Minus -->
+        <Button
+            android:id="@+id/btnMinus"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:layout_below="@+id/btnPlus"
+            android:layout_toRightOf="@id/btnEqual"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ic_minus"
+            />
         <!-- End fourth row -->
     </RelativeLayout>
 </androidx.wear.widget.BoxInsetLayout>
