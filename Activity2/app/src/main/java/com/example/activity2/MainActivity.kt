@@ -8,24 +8,10 @@ import com.example.activity2.databinding.ActivityMainBinding
 
 class MainActivity : Activity() {
 
-    companion object {
-        fun rxNum (s : String) : Boolean {
-            return Regex("[0-9]").matches(s)
-        }
-
-        fun rxOperation (s : String) : Boolean {
-            return Regex("[+\\-x/]").matches(s)
-        }
-    }
-
     private lateinit var binding: ActivityMainBinding
 
-    private fun calculateResult (ope : TextView) : String {
-        return ""
-    }
-
     private fun concateOperation (ope : TextView, v : String) : String {
-        return "${ope.text}${if (rxNum(v)) v else " $v "}"
+        return "${ope.text}${if (Calculator.rxNum(v)) v else " $v "}"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,20 +34,27 @@ class MainActivity : Activity() {
 
         val c : Button = binding.btnC
 
+        var flag = false
+
         // Concatena al resultado para formar la operación
         for ((k, b) in buttons)
             b.setOnClickListener {
+                if (flag)
+                    result.text = ""
                 result.text = concateOperation(result, k)
+                flag = false
             }
 
         // Elimina todas las operaciones
         c.setOnClickListener {
             result.text = ""
+            flag = false
         }
 
         // Realiza la operación
         equal.setOnClickListener {
-            result.text = calculateResult(result)
+            result.text = Calculator().calculate(result.text.toString())
+            flag = true
         }
     }
 }
