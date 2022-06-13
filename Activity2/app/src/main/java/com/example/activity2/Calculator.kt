@@ -1,19 +1,26 @@
 package com.example.activity2
 
+import java.util.*
+
 class Calculator {
     companion object {
-        private const val ERROR_MSG = "Syntax Error"
+        private const val SYNTAX_ERROR_MSG = "Syntax Error"
+        private const val MATH_ERROR_MSG = "Math Error"
 
         fun rxNum (s : String) : Boolean {
-            return Regex("[0-9]").matches(s)
+            return Regex("[0-9]+").matches(s)
         }
 
         fun rxMajorOperation (s : String) : Boolean {
-            return Regex("[x/]").matches(s)
+            return Regex("[x\\/]+").matches(s)
         }
 
         fun rxMinorOperation (s : String) : Boolean {
-            return Regex("[\\-+]").matches(s)
+            return Regex("[\\-\\+]+").matches(s)
+        }
+
+        fun rxOperation (s : String) : Boolean {
+            return rxMinorOperation(s) || rxMajorOperation(s)
         }
     }
 
@@ -31,101 +38,107 @@ class Calculator {
         return true
     }
 
-    private fun convert (operations : MutableList<String>) : MutableList<String> {
-        val listAux : MutableList<String> = mutableListOf()
-        var flag = false
-
-        for (i in 0 until operations.size) {
-            var v = operations[i]
-
-            if (flag) {
-                flag = false
-                continue
-            }
-
-            if (rxMinorOperation(v) && i+1 < operations.size && rxNum(operations[i+1])) {
-                flag = true
-                v = "${if (v.equals("-")) "${v}${operations[i+1]}" else operations[i+1] }"
-            }
-
-            listAux.add(v)
-        }
-
-        return listAux
-    }
-
     private fun doOperation (a : String, b : String, operation : String) : String {
         var result : String
 
+        val aAux : String = if (a.isBlank()) "0.0" else a
+        val bAux : String = if (b.isBlank()) "0.0" else b
+
         try {
             result = (when (operation) {
-                "+" -> a.toDouble() + b.toDouble()
-                "x" -> a.toDouble() * b.toDouble()
-                else -> a.toDouble() / b.toDouble()
+                "+" -> aAux.toDouble() + bAux.toDouble()
+                "-" -> if (aAux.equals("0.0")) bAux.toDouble() * -1
+                    else aAux.toDouble() - bAux.toDouble()
+                "x" -> aAux.toDouble() * bAux.toDouble()
+                else -> aAux.toDouble() / bAux.toDouble()
             }).toString()
         } catch (e : Exception) {
-            result = ERROR_MSG
+            result = MATH_ERROR_MSG
         }
+
+        println("Result: $a $operation $b = $result, A: $a, B: $b, Operation: $operation")
 
         return result
     }
 
-    fun calculate (operation : String) : String {
+    private fun emptyOperations(previousOperations: MutableList<String>): String {
+        var result = "0.0"
+        var lastOpe = ""
+        var canMinus = false
+
+        for (po in previousOperations) {
+            println("po: $po")
+
+            if (rxOperation(po))
+                if (rxMajorOperation(lastOpe) && po.equals("-"))
+                    canMinus = true
+                else
+                    lastOpe = po
+            else {
+                var poAux = po
+
+                if (canMinus) {
+                    poAux = "-$po"
+                    canMinus = false
+                }
+
+                if (lastOpe.isNotBlank()) {
+                    result = doOperation(result, poAux, lastOpe)
+                    lastOpe = ""
+                } else
+                    result = doOperation(result, poAux, "+")
+            }
+        }
+
+        if (canMinus)
+            result = doOperation(result, "-1", "x")
+
+        return result
+    }
+
+    private fun calculate (operations : MutableList<String>, pos : Int = 0, previousOperations : MutableList<String> = mutableListOf()) : Double {
+        if (pos >= operations.size) {
+            val result = emptyOperations(previousOperations)
+            println("Final Result: $result")
+            return result.toDouble()
+        }
+
+        var ope1 : String = operations[pos]
+
+        println("ope1: $ope1")
+
+        if (rxNum(ope1) && previousOperations.size > 1 && rxMajorOperation(previousOperations.last())) {
+            val operator = previousOperations.removeLast()
+            val ope2 : String = previousOperations.removeLast()
+            ope1 = doOperation(ope2, ope1, operator)
+        }
+
+        previousOperations.add(ope1)
+
+        return calculate(operations, pos + 1, previousOperations)
+    }
+
+    fun calculator (operation : String) : String {
         // Convierte el string a una Lista
-        var listOperations : MutableList<String> = operation.split(" ").toMutableList()
+        var listOperations : MutableList<String> = operation.trim().split(" ").filter { it.isNotBlank() && it.isNotEmpty() }.toMutableList()
 
         try {
             if (listOperations.size == 1)
                 if (rxNum(listOperations[0]))
                     return listOperations[0]
-                else return ERROR_MSG
+                else return SYNTAX_ERROR_MSG
             else if (listOperations.isEmpty())
                 return ""
             else if (!validate(listOperations))
-                return ERROR_MSG
+                return SYNTAX_ERROR_MSG
 
-            listOperations = convert(listOperations)
+            println("Resultado final: ${calculate(listOperations)}")
 
-            var doMajorOperation : Boolean
-
-            do {
-                var listAux : MutableList<String> = mutableListOf()
-                var i = -1
-                var flag = false
-                doMajorOperation = false
-
-                while (++i < listOperations.size) {
-                    if (flag) {
-                        flag = false
-                        continue
-                    }
-
-                    if (rxMajorOperation(listOperations[i])) {
-                        flag = true
-                        doMajorOperation = true
-                        var newNum = doOperation(listOperations[i-1], listOperations[i+1], listOperations[i])
-                        listAux[listAux.size-1] = "0"
-                        listAux.add(newNum)
-                        listOperations[i+1] = newNum
-                    } else {
-                        listAux.add(listOperations[i])
-                    }
-                }
-
-                listOperations = listAux
-
-            } while (doMajorOperation)
-
-            var result = "0"
-
-            for (i in listOperations)
-                result = doOperation(result, i, "+")
-
-            return result
+            return "${calculate(listOperations)}"
         } catch (e : Exception) {
             println("Ha ocurrido un error en la aplicación")
             println(e)
-            return ERROR_MSG
+            return MATH_ERROR_MSG
         }
     }
 }

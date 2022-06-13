@@ -53,7 +53,7 @@ class MainActivity : Activity() {
 
         // Realiza la operación
         equal.setOnClickListener {
-            result.text = Calculator().calculate(result.text.toString())
+            result.text = Calculator().calculator(result.text.toString())
             flag = true
         }
     }
