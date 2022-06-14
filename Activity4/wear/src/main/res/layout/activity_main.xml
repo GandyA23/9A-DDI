@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".MainActivity"
+    tools:deviceIds="wear">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_boxedEdges="all"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/inner_frame_layout_padding"
+            >
+
+            <!-- Botón de cuentame un cuento -->
+            <Button
+                android:id="@+id/btnBook"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/ic_book"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:id="@+id/textBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book"
+                android:layout_toRightOf="@id/btnBook"
+                android:layout_alignBaseline="@id/btnBook"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                />
+
+            <!-- Botón de reproducir música -->
+            <Button
+                android:id="@+id/btnMusic"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/ic_music"
+                android:layout_below="@id/btnBook"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:id="@+id/textMusic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/playMusic"
+                android:layout_below="@id/textBook"
+                android:layout_toRightOf="@id/btnMusic"
+                android:layout_alignBaseline="@id/btnMusic"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                />
+
+            <!-- Botón de reproducir música -->
+            <Button
+                android:id="@+id/btnHeart"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/ic_heart"
+                android:layout_below="@id/btnMusic"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:id="@+id/textHeart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/heartBit"
+                android:layout_below="@id/textMusic"
+                android:layout_toRightOf="@id/btnHeart"
+                android:layout_alignBaseline="@id/btnHeart"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+    </ScrollView>
+</androidx.wear.widget.BoxInsetLayout>
