@@ -18,6 +18,8 @@ class MainActivity : Activity() {
         setContentView(binding.root)
 
         val btnBook : Button = binding.btnBook
+        val btnHeartBeat : Button = binding.btnHeart
+        val btnJoke : Button = binding.btnJoke
 
         btnBook.setOnClickListener {
             // De mi vista (this) ve a la vista de book (MainActivityBook)
@@ -33,6 +35,14 @@ class MainActivity : Activity() {
             Log.w("warning_intent", "Ha ocurrido un warning")
 
             Log.v("error_intent", "Ha ocurrido un error")
+        }
+
+        btnJoke.setOnClickListener {
+            // De mi vista (this) ve a la vista de heart beat (MainActivityJoke)
+            val intent = Intent(this, MainActivityJoke::class.java)
+
+            // Vamos a mi vista
+            startActivity(intent)
         }
     }
 }
