@@ -11,12 +11,6 @@
     <string name="joke">Chistes</string>
     <string name="nextJoke">Siguiente chiste</string>
     <string name="previousJoke">Chiste anterior</string>
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-    </string-array>
     <string name="joke1">¿Cuál es el último animal que subió al arca de Noé? El del-fin.</string>
     <string name="joke2">¿Cómo se dice pañuelo en japonés? Saka-moko.</string>
     <string name="joke3">¿Cómo se dice disparo en árabe? Ahí-va-la-bala.</string>

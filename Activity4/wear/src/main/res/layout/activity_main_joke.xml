@@ -37,28 +37,47 @@
             tools:text="Chiste 1"
             android:gravity="center"
             android:textSize="10sp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_below="@+id/linear"/>
+
+        <View
+            android:id="@+id/viewJoke"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/textJoke"
+            android:layout_centerHorizontal="true"/>
 
         <Button
             android:id="@+id/btnPrevious"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/ic_previous"
-            android:layout_marginTop="40dp"
-            android:layout_below="@id/textJoke"
-            android:layout_marginRight="50dp"
-            />
+            android:layout_below="@id/viewJoke"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@id/textNoJoke"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/ic_previous" />
+
+        <TextView
+            android:id="@+id/textNoJoke"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            tools:text="1"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/viewJoke" />
 
         <Button
             android:id="@+id/btnNext"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/ic_next"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_toRightOf="@id/btnPrevious"
-            android:layout_below="@id/textJoke"
+            android:layout_below="@id/viewJoke"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/textNoJoke"
             />
 
 
