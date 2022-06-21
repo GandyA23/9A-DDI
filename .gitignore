@@ -3,3 +3,6 @@
 
 # Carpeta creada durante la ejecución de proyectos en Kotlin
 */out/
+
+# Carpeta de configuración de AS
+*/.idea
