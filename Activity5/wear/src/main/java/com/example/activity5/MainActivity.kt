@@ -16,12 +16,7 @@ class MainActivity : Activity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+    private fun testFirebase () {
         // Testing get a document once
         val docRef = NOTES.document("pl2ooxOWoQbWesSJfEbN")
         docRef.get()
@@ -35,5 +30,14 @@ class MainActivity : Activity() {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        testFirebase()
     }
 }

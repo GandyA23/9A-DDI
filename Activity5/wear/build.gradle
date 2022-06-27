@@ -36,5 +36,6 @@ dependencies {
     implementation 'androidx.wear:wear:1.2.0'
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
     implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'androidx.databinding:databinding-runtime:7.2.1'
     wearApp project(":wear")
 }
