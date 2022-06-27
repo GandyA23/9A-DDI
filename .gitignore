@@ -6,3 +6,6 @@
 
 # Carpeta de configuración de AS
 */.idea
+
+# Archivo de configuración para firebase
+**/google-services.json
