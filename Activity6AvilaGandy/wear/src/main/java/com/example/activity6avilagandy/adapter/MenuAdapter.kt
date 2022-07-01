@@ -1,4 +1,4 @@
-package com.example.activity6avilagandy.collections
+package com.example.activity6avilagandy.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -8,8 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.activity6avilagandy.MainActivityElementMenu
 import com.example.activity6avilagandy.R
+import com.example.activity6avilagandy.collection.Menu
 import com.example.activity6avilagandy.databinding.ActivityMenuRecyclerBinding
-import com.example.activity6avilagandy.util.ImageConvertBitmap
+import com.squareup.picasso.Picasso
 
 class MenuAdapter (val listMenu : MutableList<Menu>, val context : Context) : RecyclerView.Adapter<MenuAdapter.Holder>()  {
     class Holder (val binding : ActivityMenuRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -25,7 +26,7 @@ class MenuAdapter (val listMenu : MutableList<Menu>, val context : Context) : Re
 
         // Set title and image
         holder.binding.title.text = element.title
-        holder.binding.iconMenu.setImageBitmap(ImageConvertBitmap.convert(element.image))
+        Picasso.get().load(element.image).into(holder.binding.iconMenu)
 
         holder.binding.root.setOnClickListener {
             context.apply {

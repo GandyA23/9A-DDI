@@ -4,8 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.wear.widget.WearableLinearLayoutManager
-import com.example.activity6avilagandy.collections.Menu
-import com.example.activity6avilagandy.collections.MenuAdapter
+import com.example.activity6avilagandy.collection.Menu
+import com.example.activity6avilagandy.adapter.MenuAdapter
 import com.example.activity6avilagandy.databinding.ActivityMainBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -44,7 +44,7 @@ class MainActivity : Activity() {
                     // Center childs elements in Recycler View
                     binding.recyclerView.isEdgeItemsCenteringEnabled = true
 
-                    // When the display is circular, do an 180° effect in scroll
+                    // When the display is circular, do an degree effect in scroll
                     binding.recyclerView.isCircularScrollingGestureEnabled = true
 
                     binding.recyclerView.layoutManager = WearableLinearLayoutManager(this)
