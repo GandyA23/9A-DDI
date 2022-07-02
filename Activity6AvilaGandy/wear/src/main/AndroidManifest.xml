@@ -36,7 +36,7 @@
         </activity>
 
         <activity
-            android:name=".MainActivityElementMenu"
+            android:name=".MainActivityElement"
             android:exported="true"
             android:label="@string/title_activity_main_element_menu">
             <intent-filter>
