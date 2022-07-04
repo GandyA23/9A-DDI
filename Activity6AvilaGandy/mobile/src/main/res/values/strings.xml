@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Activity6AvilaGandy</string>
+    <string name="mainTitle">Registro de documentos</string>
+    <string name="editTextTitle">Título:</string>
+    <string name="editTextImage">Url de la imagen:</string>
+    <string name="editTextDescription">Descripción:</string>
+    <string name="collection1">Cuentos</string>
+    <string name="collection2">Chistes</string>
+    <string name="collection3">Notas</string>
+    <string name="save">Guardar</string>
 </resources>

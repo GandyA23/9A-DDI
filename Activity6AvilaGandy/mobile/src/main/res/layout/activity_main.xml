@@ -6,13 +6,144 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:id="@+id/mainTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mainTitle"
+            android:textSize="20dp"
+            android:textColor="#000"
+            />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_below="@id/mainTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/editTextTitle"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:textColor="#000"
+            />
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_below="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            />
+
+        <!-- Imagen -->
+        <TextView
+            android:id="@+id/imageTextView"
+            android:layout_below="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/editTextImage"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/imageEditText"
+            android:layout_below="@+id/imageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            />
+
+        <!-- Descripción -->
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_below="@+id/imageEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/editTextDescription"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_below="@+id/descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="30"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            />
+
+        <!-- Colección -->
+        <TextView
+            android:id="@+id/collectionRadio"
+            android:layout_below="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Colección:"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            />
+
+        <RadioGroup
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/collectionGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/collectionRadio"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/collectionRadio1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/collection1"
+                android:textSize="15dp"
+                />
+
+            <RadioButton
+                android:id="@+id/collectionRadio2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checked="false"
+                android:text="@string/collection2"
+                android:textSize="15dp"
+                />
+
+            <RadioButton
+                android:id="@+id/collectionRadio3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checked="false"
+                android:text="@string/collection3"
+                android:textSize="15dp"
+                />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_below="@id/collectionGroup"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save" />
+
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
