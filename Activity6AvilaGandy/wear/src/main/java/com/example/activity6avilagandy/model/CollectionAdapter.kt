@@ -25,16 +25,29 @@ class CollectionAdapter (val listCollection : MutableList<Collection>, val conte
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val element : Collection = listCollection[position]
 
+        // Asigna la foto y el título al elemento en el recycler view
         holder.binding.title.text = element.title
         Picasso.get().load(element.image).into(holder.binding.iconMenu)
 
         holder.binding.root.setOnClickListener {
+            // Dependiendo la estructura del documento, realiza una acción
             context.apply {
                 if (element.description.equals(MainActivity.DEFAULT_DESCRIPTION)) {
+                    /**
+                     * Si el documento no cuenta con una descripción, entonces
+                     * quiere decir que te encuentras en el menú principal,
+                     * cuando se le de click a este elemento, entonces vas a
+                     * mostrar los documentos de esa colección
+                     * */
                     val intent = MainActivity.getIntent(this)
                     intent.putExtra(MainActivityElement.COLLECTION, element.title)
                     startActivity(intent)
                 } else {
+                    /**
+                     * En caso contrario, quiere decir que quieres mostrar un
+                     * documento en específico, entonces cuando de click, envía
+                     * la información a MainActivityElement para mostrarla.
+                     * */
                     val intent = MainActivityElement.getIntent(this)
                     intent.putExtra(MainActivityElement.TITLE, element.title)
                     intent.putExtra(MainActivityElement.DESCRIPTION, element.description)

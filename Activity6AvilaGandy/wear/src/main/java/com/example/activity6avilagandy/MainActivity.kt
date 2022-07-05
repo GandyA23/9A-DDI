@@ -32,21 +32,30 @@ class MainActivity : Activity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: CollectionAdapter
 
+    /**
+     * Este activity enfocado para mostrar los documentos de
+     * cualquier colección en un recycler view
+     * */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bundle = intent.extras
-        var col : String? = bundle?.getString(COLLECTION)
         val listCollection : MutableList<Collection> = mutableListOf()
 
+        // Consulta si enviaron el nombre de una colección para mostrar sus documentos
+        val bundle = intent.extras
+        var col : String? = bundle?.getString(COLLECTION)
+
+        // En caso de que no detecte que hayan enviado el nombre de una colección, entonces utiliza la default (Menu)
+        // El default se encargará de mostrar los menús que existen en la aplicación
         if (col == null)
             col = DEFAULT_COLLECTION
 
         FIREBASE_COLLECTION.collection(col!!).get().addOnSuccessListener { document ->
             if (document != null) {
+                // Recorre los documentos de la colección y recolectalos para el adapter
                 for (doc in document) {
                     listCollection.add(
                         Collection(
@@ -58,13 +67,13 @@ class MainActivity : Activity() {
                     )
                 }
 
-                // Set data to adapter and configurate
+                // Asigna los datos al adapter y configuralo
                 adapter = CollectionAdapter(listCollection, this)
 
-                // Center childs elements in Recycler View
+                // Centra los elementos en el recycler view
                 binding.recyclerView.isEdgeItemsCenteringEnabled = true
 
-                // When the display is circular, do an degree effect in scroll
+                // En caso de que la vista se encuentre en un dispositivo circular, entonces puedes realizar un efecto circular
                 binding.recyclerView.isCircularScrollingGestureEnabled = true
 
                 binding.recyclerView.layoutManager = WearableLinearLayoutManager(this)
