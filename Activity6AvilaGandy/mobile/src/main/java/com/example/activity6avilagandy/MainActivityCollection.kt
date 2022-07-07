@@ -41,6 +41,14 @@ class MainActivityCollection : AppCompatActivity() {
                 IMAGE to image
             )
         }
+
+        fun validateData (title: String?, image : String?) : Boolean {
+            try {
+                return !title!!.isNullOrEmpty() && !image!!.isNullOrEmpty() && !title.equals("null")
+            } catch (e : Exception) {
+                return false
+            }
+        }
     }
 
     private lateinit var binding: ActivityMainCollectionBinding
@@ -67,7 +75,18 @@ class MainActivityCollection : AppCompatActivity() {
         btnChooseImage.setOnClickListener { launchGallery() }
 
         // Configura el comportamiento del botón de guardar
-        btnSave.setOnClickListener { saveDataOnCollection() }
+        btnSave.setOnClickListener {
+            btnSave.isClickable = false
+            if (validateData(
+                    titleEditTxt.text.toString(),
+                    filePath.path
+                ))
+                saveDataOnCollection()
+            else
+                Toast.makeText(this@MainActivityCollection,
+                    "Favor de llenar todos los datos", Toast.LENGTH_SHORT).show()
+            btnSave.isClickable = true
+        }
     }
 
     // Ayuda a seleccionar la imagen de la galeria

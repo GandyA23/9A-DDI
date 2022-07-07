@@ -7,14 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.activity6avilagandy.databinding.ActivityMainDocumentBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import java.io.IOException
 import java.util.*
 import kotlin.collections.HashMap
@@ -44,6 +42,14 @@ class MainActivityDocument : AppCompatActivity() {
                 DESCRIPTION to description,
                 IMAGE to image
             )
+        }
+
+        fun validateData (title: String?, description: String?, image : String?) : Boolean {
+            try {
+                return !title.equals("null") && !description.equals("null") && !title!!.isNullOrEmpty() && !description!!.isNullOrEmpty() && !image!!.isNullOrEmpty()
+            } catch (e : Exception) {
+                return false
+            }
         }
     }
 
@@ -80,7 +86,17 @@ class MainActivityDocument : AppCompatActivity() {
         btnChooseImage.setOnClickListener { launchGallery() }
         
         // Configura el comportamiento del botón de guardar
-        btnSave.setOnClickListener { saveDataOnCollection() }
+        btnSave.setOnClickListener {
+            if (validateData(
+                    titleEditTxt.text.toString(),
+                    descriptionEditTxt.text.toString(),
+                    filePath.path
+                ))
+                saveDataOnCollection()
+            else
+                Toast.makeText(this@MainActivityDocument,
+                    "Favor de llenar todos los datos", Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Ayuda a seleccionar la imagen de la galeria
