@@ -2,17 +2,24 @@ package com.example.activity6avilagandy.model
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toFile
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.activity6avilagandy.MainActivity
 import com.example.activity6avilagandy.MainActivityElement
 import com.example.activity6avilagandy.R
 import com.example.activity6avilagandy.databinding.ActivityMenuRecyclerBinding
+import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 
 class CollectionAdapter (val listCollection : MutableList<Collection>, val context : Context) : RecyclerView.Adapter<CollectionAdapter.Holder>()  {
+    companion object {
+        private val FIRES_REF = FirebaseStorage.getInstance().reference
+    }
+
     class Holder (val binding : ActivityMenuRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
     }
 
@@ -27,7 +34,12 @@ class CollectionAdapter (val listCollection : MutableList<Collection>, val conte
 
         // Asigna la foto y el título al elemento en el recycler view
         holder.binding.title.text = element.title
-        Picasso.get().load(element.image).into(holder.binding.iconMenu)
+
+        FIRES_REF.child(element.image).downloadUrl.addOnSuccessListener {
+            it ->
+            Picasso.get().load(it.normalizeScheme()).into(holder.binding.iconMenu)
+        }
+
 
         holder.binding.root.setOnClickListener {
             // Dependiendo la estructura del documento, realiza una acción
