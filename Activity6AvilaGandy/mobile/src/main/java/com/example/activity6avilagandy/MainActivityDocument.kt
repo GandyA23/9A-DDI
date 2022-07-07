@@ -130,8 +130,8 @@ class MainActivityDocument : AppCompatActivity() {
 
     // Guarda un documento en Firebase
     fun saveDataOnCollection () {
+        // Guarda la imagen en Cloud Storage
         val uuid : String = UUID.randomUUID().toString()
-
         val ref = FIRES_REF.child("$collectionName/$uuid")
         val uploadTask = ref.putFile(filePath)
 

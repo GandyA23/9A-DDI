@@ -12,6 +12,7 @@
     <string name="option_menu_1">Agregar nueva colección</string>
     <string name="option_menu_2">Agregar nuevo documento</string>
     <string name="main_title">Registro de documentos</string>
+    <string name="main_title_collection">Registro de colecciones</string>
     <string name="title">Título:</string>
     <string name="image">Imagen:</string>
     <string name="description">Descripción:</string>

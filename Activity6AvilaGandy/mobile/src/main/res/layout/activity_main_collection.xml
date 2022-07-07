@@ -6,18 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".MainActivityCollection">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bienvenido a la vista de colleciones"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:gravity="center"
-            />
-    </RelativeLayout>
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/mainTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_title_collection"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:gravity="center"
+                />
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_below="@id/mainTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:layout_marginTop="30dp"
+                android:textSize="20dp"
+                android:textColor="#000"
+                />
+
+            <EditText
+                android:id="@+id/titleEditText"
+                android:layout_below="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                />
+
+            <!-- Imagen -->
+            <TextView
+                android:id="@+id/imageTextView"
+                android:layout_below="@+id/titleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/image"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:layout_marginTop="10dp"
+                />
+
+            <!-- Previsualización de imagen -->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/imageTextView"
+                android:scaleType="centerCrop"
+                android:background="@color/purple_500"
+                />
+
+            <!-- Selecciona una imagen -->
+            <Button
+                android:id="@+id/chooseImageBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_below="@+id/imageView"
+                android:layout_marginTop="20dp"
+                android:text="@string/choose_image"
+                />
+
+            <!-- Button Save -->
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_below="@id/chooseImageBtn"
+                android:layout_marginVertical="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
